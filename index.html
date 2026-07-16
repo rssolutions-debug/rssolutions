@@ -3,138 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RS-SOLUTIONS | Construção e Manutenção no Grande Porto</title>
+    <title>RUISILVASOLUTIONS | Soluções à Sua Medida - Matosinhos</title>
     <!-- Ícones profissionais -->
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
+        /* Cores oficiais baseadas na imagem do cliente */
         :root {
-            --primary: #0f172a;
-            --accent: #f97316;
-            --light: #f8fafc;
-            --text: #334155;
+            --dark-blue: #2b3990; /* Azul escuro do título principal */
+            --light-blue: #00aeef; /* Azul claro do RSS / RUISILVASOLUTIONS */
+            --bg-card: #e6f7fe; /* Fundo azul suave da lista */
+            --text: #333333;
         }
+        
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { color: var(--text); background-color: #ffffff; line-height: 1.6; }
         
-        header { background: var(--primary); color: white; padding: 20px; text-align: center; font-weight: bold; font-size: 24px; letter-spacing: 1px; }
+        /* Topo / Logótipo */
+        header { 
+            background: #ffffff; 
+            padding: 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            max-width: 1100px;
+            margin: auto;
+            border-bottom: 2px solid var(--bg-card);
+        }
+        .logo-rss { color: var(--light-blue); font-weight: bold; font-size: 24px; }
+        .logo-full { color: var(--light-blue); font-weight: bold; font-size: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
         
-        .hero { background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('https://unsplash.com') no-repeat center center/cover; color: white; text-align: center; padding: 80px 20px; }
-        .hero h1 { font-size: 42px; margin-bottom: 10px; color: white; }
-        .hero p { font-size: 20px; margin-bottom: 30px; color: #cbd5e1; }
+        /* Banner Principal */
+        .hero { 
+            text-align: center; 
+            padding: 60px 20px; 
+            background: linear-gradient(135deg, #ffffff 0%, var(--bg-card) 100%);
+        }
+        .hero h1 { font-size: 38px; color: var(--dark-blue); text-transform: uppercase; font-weight: 800; margin-bottom: 30px; letter-spacing: 1px; }
         
-        .btn { display: inline-block; background: var(--accent); color: white; padding: 12px 30px; text-align: center; border-radius: 5px; text-decoration: none; font-weight: bold; transition: 0.3s; margin: 5px; }
-        .btn:hover { background: #ea580c; transform: translateY(-2px); }
-        .btn-wp { background: #25d366; }
-        .btn-wp:hover { background: #22c35e; }
+        /* Grelha de Conteúdo Principal */
+        .main-content { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 40px; 
+            max-width: 1100px; 
+            margin: auto; 
+            padding: 40px 20px;
+            align-items: center;
+        }
+        
+        /* Lista de Serviços (Estilo igual ao cartão) */
+        .services-list-container { 
+            background: var(--bg-card); 
+            padding: 40px 30px; 
+            border-radius: 0px 40px 40px 40px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .services-list { list-style: none; }
+        .services-list li { 
+            font-size: 18px; 
+            font-weight: 600; 
+            color: #1e293b; 
+            margin-bottom: 18px; 
+            display: flex; 
+            align-items: flex-start;
+        }
+        .services-list li::before { 
+            content: "•"; 
+            color: #000000; 
+            font-size: 25px; 
+            margin-right: 12px; 
+            line-height: 18px;
+        }
 
-        .container { max-width: 1100px; margin: auto; padding: 60px 20px; }
-        .section-title { text-align: center; font-size: 32px; margin-bottom: 40px; color: var(--primary); position: relative; }
-        .section-title::after { content: ''; display: block; width: 60px; height: 4px; background: var(--accent); margin: 10px auto 0; border-radius: 2px; }
+        /* Imagem Ilustrativa */
+        .worker-img { width: 100%; max-width: 450px; border-radius: 20px; margin: auto; display: block; }
         
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .service-card { background: var(--light); padding: 30px; border-radius: 8px; text-align: center; border-top: 5px solid var(--primary); transition: 0.3s; }
-        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top-color: var(--accent); }
-        .service-card i { font-size: 40px; color: var(--accent); margin-bottom: 20px; }
-        .service-card h3 { margin-bottom: 15px; font-size: 22px; color: var(--primary); }
-
-        .contact-section { background: var(--light); }
-        .contact-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .contact-info i { color: var(--accent); margin-right: 10px; width: 20px; }
-        .contact-info p { margin-bottom: 15px; font-size: 18px; }
-        .contact-link { color: inherit; text-decoration: none; transition: 0.2s; }
-        .contact-link:hover { color: var(--accent); }
+        /* Secção de Contactos e Formulário */
+        .contact-section { background: #f8fafc; padding: 60px 20px; border-top: 1px solid #e2e8f0; }
+        .contact-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1100px; margin: auto; }
         
-        form { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .contact-info h2 { color: var(--light-blue); font-size: 24px; text-transform: uppercase; margin-bottom: 20px; font-weight: 700; }
+        .contact-info p { font-size: 18px; margin-bottom: 15px; }
+        .contact-info strong { color: #000000; }
+        .contact-link { color: inherit; text-decoration: none; font-weight: bold; }
+        .contact-link:hover { color: var(--light-blue); }
+        
+        /* Botões de Ação */
+        .btn-box { margin-top: 25px; }
+        .btn { display: inline-block; padding: 14px 28px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 16px; margin-right: 10px; margin-bottom: 10px; transition: 0.2s; text-align: center; }
+        .btn-wp { background: #25d366; color: white; }
+        .btn-wp:hover { background: #20ba5a; transform: translateY(-2px); }
+        
+        /* Formulário */
+        form { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-top: 4px solid var(--dark-blue); }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 6px; font-weight: 600; color: var(--dark-blue); }
         .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 16px; }
-        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--light-blue); }
+        .form-btn { width: 100%; background: var(--dark-blue); color: white; border: none; padding: 14px; font-weight: bold; font-size: 16px; border-radius: 4px; cursor: pointer; transition: 0.2s; }
+        .form-btn:hover { background: #1e2766; }
         
-        footer { background: var(--primary); color: #94a3b8; text-align: center; padding: 30px 20px; font-size: 14px; border-top: 1px solid #1e293b; }
+        /* Rodapé */
+        footer { background: #1e293b; color: #94a3b8; text-align: center; padding: 30px 20px; font-size: 14px; }
+
+        @media (max-width: 600px) {
+            header { flex-direction: column; gap: 10px; text-align: center; }
+            .hero h1 { font-size: 28px; }
+        }
     </style>
 </head>
 <body>
 
+    <!-- Cabeçalho com as marcas da imagem -->
     <header>
-        RS-SOLUTIONS
+        <div class="logo-rss">RSS</div>
+        <div class="logo-full">RUISILVASOLUTIONS</div>
     </header>
 
+    <!-- Slogan Principal -->
     <section class="hero">
-        <div class="container" style="padding: 0;">
-            <a href="https://wa.me." target="_blank" class="btn btn-wp"><i class="fab fa-whatsapp"></i> Orçamento por WhatsApp</a>
-
-            <p>Soluções à sua medida — Construção, Manutenção e Reparação</p>
-            <a href="https://wa.me." target="_blank" class="btn btn-wp"><i class="fab fa-whatsapp"></i> Orçamento por WhatsApp</a>
-            <a href="#contacto" class="btn">Pedir por E-mail</a>
-        </div>
+        <h1>Soluções à Sua Medida</h1>
     </section>
 
-    <section class="container">
-        <h2 class="section-title">Os Nossos Serviços</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fas fa-tools"></i>
-                <h3>Construção</h3>
-                <p>Remodelações totais ou parciais e ampliações. Garantimos estruturas robustas e acabamentos com materiais de alta qualidade.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-shield-alt"></i>
-                <h3>Manutenção</h3>
-                <p>Serviços para habitações, condomínios e espaços comerciais. Proteja o seu património e evite avarias dispendiosas.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-wrench"></i>
-                <h3>Reparação</h3>
-                <p>Intervenções rápidas e eficazes para resolver problemas de canalização, eletricidade, infiltrações, pinturas e reparações gerais do dia a dia.</p>
-            </div>
+    <!-- Área dos Serviços (Estilo Panfleto) -->
+    <main class="main-content">
+        <div class="services-list-container">
+            <ul class="services-list">
+                <li>Instalações eléctricas</li>
+                <li>Vídeo-porteiros e intercomunicadores</li>
+                <li>Reparação e montagem de electrodomésticos e estores</li>
+                <li>Remodelação de habitações e espaços comerciais</li>
+                <li>Canalizações - pinturas - pladur - carpintaria</li>
+                <li>Telhados - fachadas - capoto</li>
+            </ul>
         </div>
-    </section>
+        <div>
+            <!-- Imagem representativa do setor -->
+            <img class="worker-img" src="https://unsplash.com" alt="Profissional de Manutenção">
+        </div>
+    </main>
 
+    <!-- Secção de Pedido de Informações -->
     <section class="contact-section" id="contacto">
-        <div class="container">
-            <h2 class="section-title">Pedir Orçamento Gratuito</h2>
-            <div class="contact-container">
-                <p><i class="fas fa-phone"></i> <strong>Telemóvel:</strong> <a class="contact-link" href="tel:+351939231009">939 231 009</a></p>
-
-                <div class="contact-info">
-                    <h3 style="margin-bottom: 20px; color: var(--primary);">RS-SOLUTIONS</h3>
-                    <p>Entre em contacto connosco. Apresentamos soluções rápidas pensadas à medida do seu imóvel e do seu orçamento.</p>
-                    <p style="margin-top: 30px;"><i class="fas fa-map-marker-alt"></i> <strong>Zona de Atendimento:</strong> Grande Porto</p>
-                    <p><i class="fas fa-phone"></i> <strong>Telemóvel:</strong> <a class="contact-link" href="tel:+351939231009">939 231 009</a></p>
-                    <p><i class="envelope fas fa-envelope"></i> <strong>E-mail:</strong> <a class="contact-link" href="mailto:rssolutions@outlook.pt">rssolutions@outlook.pt</a></p>
+        <div class="contact-container">
+            
+            <div class="contact-info">
+                <h2>Pedido de Informações</h2>
+                <p><i class="fas fa-phone-alt" style="color: var(--light-blue); margin-right: 8px;"></i> <strong>Telms.:</strong> <a class="contact-link" href="tel:+351939231009">939 231 009</a></p>
+                <p style="font-size: 14px; color: #64748b; margin-top: -10px; margin-left: 25px;">(Chamada para a rede móvel nacional)</p>
+                <p><i class="fas fa-envelope" style="color: var(--light-blue); margin-right: 8px;"></i> <strong>E-mail:</strong> <a class="contact-link" href="mailto:rssolutions@outlook.pt">rssolutions@outlook.pt</a></p>
+                <p><i class="fas fa-map-marker-alt" style="color: var(--light-blue); margin-right: 8px;"></i> <strong>Localidade:</strong> Matosinhos / Grande Porto</p>
+                
+                <div class="btn-box">
+                    <a href="https://wa.me." target="_blank" class="btn btn-wp"><i class="fab fa-whatsapp"></i> Falar no WhatsApp</a>
                 </div>
-
-                <!-- Formulário real configurado com o seu e-mail -->
-                <form action="https://formsubmit.co/rssolutions@outlook.pt" method="POST">
-
-                    <input type="hidden" name="_subject" value="Novo Pedido de Orçamento - RS-SOLUTIONS">
-                    
-                    <div class="form-group">
-                        <label for="name">Nome Completo</label>
-                        <input type="text" id="name" name="Nome" placeholder="Ex: João Silva" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Telemóvel</label>
-                        <input type="tel" id="phone" name="Telefone" placeholder="Ex: 910 000 000" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="location">Localidade da Obra</label>
-                        <input type="text" id="location" name="Localidade" placeholder="Ex: Porto, Gaia, Matosinhos..." required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Descrição do Serviço</label>
-                        <textarea id="message" name="Mensagem" rows="4" placeholder="O que precisa de construir, manter ou reparar?" required></textarea>
-                    </div>
-                    <button type="submit" class="btn" style="width: 100%; border: none; cursor: pointer;">Enviar Pedido por E-mail</button>
-                </form>
-
             </div>
+
+            <!-- Formulário que envia direto para o rssolutions@outlook.pt -->
+            <form action="https://formsubmit.co" method="POST">
+                <input type="hidden" name="_subject" value="Nova Mensagem - RUISILVASOLUTIONS">
+                
+                <div class="form-group">
+                    <label for="name">Nome Completo</label>
+                    <input type="text" id="name" name="Nome" placeholder="Seu nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telemóvel</label>
+                    <input type="tel" id="phone" name="Telefone" placeholder="Ex: 910000000" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensagem / O que precisa?</label>
+                    <textarea id="message" name="Mensagem" rows="3" placeholder="Descreva o serviço que necessita..." required></textarea>
+                </div>
+                <button type="submit" class="form-btn">Enviar Pedido por E-mail</button>
+            </form>
+
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 RS-SOLUTIONS. Soluções à sua Medida no Grande Porto.</p>
-        <p style="font-size: 11px; margin-top: 5px; color: #64748b;">Construção, Manutenção e Reparação de Habitações e Espaços Comerciais.</p>
+        <p>&copy; 2026 RUISILVASOLUTIONS. Todos os direitos reservados.</p>
+        <p style="font-size: 12px; margin-top: 5px; color: #64748b;">Matosinhos - Soluções à sua medida.</p>
     </footer>
 
 </body>
